@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GreenWallet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Remix Icons for simple icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+
+<!-- ========== LOGIN SCREEN ========== -->
+<div class="login-wrapper" id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">
+      <i class="ri-leaf-line"></i>
+    </div>
+    <h1 class="login-title">Welcome to GreenWallet</h1>
+    <p class="login-subtitle">Sign in to continue</p>
+
+    <button class="login-google">
+      <i class="ri-google-fill"></i>
+      Continue with Google
+    </button>
+
+    <div class="divider">
+      <span></span> OR <span></span>
+    </div>
+
+    <div class="input-label">Email</div>
+    <input type="email" class="input-field" placeholder="you@example.com" />
+
+    <div class="input-label">Password</div>
+    <input type="password" class="input-field" placeholder="••••••••" />
+
+    <button class="login-primary" id="fakeSignInBtn">Sign in</button>
+
+    <div class="login-footer">
+      <a href="#">Forgot password?</a>
+      <span>Need an account? <a href="#">Sign up</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== APP LAYOUT ========== -->
+<div class="app-wrapper" id="appWrapper">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">
+          <i class="ri-leaf-line"></i>
+        </div>
+        GreenWallet
+      </div>
+
+      <div class="nav-section-title">Main</div>
+      <ul class="sidebar-nav" id="navList">
+        <li class="sidebar-link active" data-screen="dashboardScreen">
+          <i class="ri-dashboard-line"></i> Dashboard
+        </li>
+        <li class="sidebar-link" data-screen="logActionScreen">
+          <i class="ri-leaf-line"></i> Log Action
+        </li>
+        <li class="sidebar-link" data-screen="waterTrackerScreen">
+          <i class="ri-drop-line"></i> Water Tracker
+        </li>
+        <li class="sidebar-link" data-screen="partnersScreen">
+          <i class="ri-shield-check-line"></i> Partners
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">M</div>
+          <div>
+            <div style="font-size: 13px; font-weight: 500;">Manish Kafle</div>
+            <div style="font-size: 11px; color:#cbd5f5;">kaflemanish508@gmail.com</div>
+          </div>
+        </div>
+        <div class="sidebar-signout" id="signOutBtn">
+          <i class="ri-logout-box-r-line"></i>
+          <span>Sign Out</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <!-- DASHBOARD -->
+      <section class="screen active" id="dashboardScreen">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Dashboard</div>
+            <p class="page-subtitle">Track your environmental impact and progress.</p>
+          </div>
+          <button class="btn-green" data-screen-jump="logActionScreen">
+            <i class="ri-add-line"></i> Log Action
+          </button>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="card">
+            <div class="metric-title">EcoPoints Earned</div>
+            <div class="metric-value">50</div>
+            <div class="metric-footer">
+              <span class="up"><i class="ri-arrow-up-s-line"></i>12%</span> vs last month
+            </div>
+          </div>
+          <div class="card">
+            <div class="metric-title">CO₂ Saved (kg)</div>
+            <div class="metric-value">4.8</div>
+            <div class="metric-footer">
+              Based on your logged actions.
+            </div>
+          </div>
+          <div class="card">
+            <div class="metric-title">Water Saved (L)</div>
+            <div class="metric-value">60</div>
+            <div class="metric-footer">
+              <span class="up"><i class="ri-drop-fill"></i></span> from 3 logs
+            </div>
+          </div>
+          <div class="card">
+            <div class="metric-title">Total Actions</div>
+            <div class="metric-value">5</div>
+            <div class="metric-footer">
+              Keep going! 🌱
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="empty-state">
+              No recent activity. Start logging your impact!
+            </div>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg,#16a34a,#059669); color:#ffffff;">
+            <h3 style="font-size:18px; margin-bottom:8px;">Did you know?</h3>
+            <p style="font-size:14px; margin-bottom:16px;">
+              Saving just 10 liters of water a day can save over 3,600 liters a year.
+              That's enough to fill a small swimming pool!
+            </p>
+            <button class="btn-outline" style="background:#ffffff; border:none; color:#065f46; font-weight:500;">
+              Track Water Usage
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOG ECO ACTION -->
+      <section class="screen" id="logActionScreen">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Log Eco Action</div>
+            <p class="page-subtitle">Record your daily green activities and earn points.</p>
+          </div>
+        </div>
+
+        <div class="card form-card">
+          <h3 class="section-title">Log Eco-Friendly Action</h3>
+
+          <div class="form-group">
+            <label class="form-label">Action Type</label>
+            <select class="select">
+              <option>Select an action...</option>
+              <option>Recycled plastic</option>
+              <option>Used public transport</option>
+              <option>Walked / cycled instead of car</option>
+              <option>Used reusable bottle</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea class="textarea" placeholder="Describe what you did..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Proof (Optional but recommended)</label>
+            <button class="upload-btn">
+              <i class="ri-upload-2-line"></i>
+              Upload Photo
+            </button>
+          </div>
+
+          <button class="submit-full">Log Action</button>
+        </div>
+      </section>
+
+      <!-- WATER TRACKER -->
+      <section class="screen" id="waterTrackerScreen">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Water Tracker</div>
+            <p class="page-subtitle">Monitor your water savings and habits.</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card form-card">
+            <h3 class="section-title">Log Water Savings</h3>
+
+            <div class="form-group">
+              <label class="form-label">Activity</label>
+              <select class="select">
+                <option>Select activity...</option>
+                <option>Shorter shower</option>
+                <option>Turned tap off while brushing</option>
+                <option>Used bucket instead of hose</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <div class="slider-row">
+                <label class="form-label">Liters Saved</label>
+                <span class="value" id="litersValue">10 L</span>
+              </div>
+              <input type="range" min="1" max="50" value="10" class="range" id="litersRange">
+              <p class="helper-text">Adjust based on your estimation.</p>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Notes (Optional)</label>
+              <textarea class="textarea" placeholder="Any extra details..."></textarea>
+            </div>
+
+            <button class="btn-blue">Log Water Save</button>
+          </div>
+
+          <div class="card">
+            <h3 class="section-title" style="margin-bottom:12px;">Savings Trend (Last 7 Logs)</h3>
+            <div class="empty-state">
+              No data yet. Log your first saving!
+            </div>
+            <div style="margin-top:20px;" class="card" >
+              <div style="font-size:14px; font-weight:600; margin-bottom:6px;">Smart Meter Integration</div>
+              <p class="helper-text" style="margin-bottom:12px;">
+                Connect your smart water meter for automatic tracking and real-time leak alerts.
+              </p>
+              <button class="pill-muted">Coming Soon</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="screen" id="partnersScreen">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Partners &amp; Businesses</div>
+            <p class="page-subtitle">Join the movement or manage partner applications.</p>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" id="tabApply">
+            <i class="ri-store-2-line"></i> Apply
+          </button>
+          <button class="tab-btn" id="tabAdmin">
+            <i class="ri-shield-user-line"></i> Admin Panel
+          </button>
+        </div>
+
+        <div class="partners-layout">
+          <!-- Left side: why partner -->
+          <div class="card partners-list" id="partnersInfo">
+            <h3 class="section-title">Why Partner With Us?</h3>
+            <ul>
+              <li>Access to eco-conscious customers</li>
+              <li>Verified green badge for your business</li>
+              <li>Feature in our rewards marketplace</li>
+            </ul>
+          </div>
+
+          <!-- Right side: application / admin panel -->
+          <div class="card" id="partnerForm">
+            <!-- Apply view by default -->
+            <h3 class="section-title" id="partnerFormTitle">Become a Green Partner</h3>
+            <p class="helper-text" id="partnerFormSubtitle">
+              Join our network of eco-friendly businesses.
+            </p>
+
+            <div class="form-group">
+              <label class="form-label">Business Name</label>
+              <input class="input" type="text" placeholder="Green Cafe Ltd." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Contact Email</label>
+              <input class="input" type="email" placeholder="partner@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Description of Eco Initiatives</label>
+              <textarea class="textarea" placeholder="We use 100% renewable energy..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Document URL (Optional)</label>
+              <input class="input" type="url" placeholder="https://..." />
+            </div>
+
+            <button class="submit-full" id="partnerSubmitBtn">Submit Application</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script src="script.js">
+</script>
+</body>
+</html>
